@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "title": "Transporter",
+  "description": "Star Trek-style transporter for Starfield. Settings apply the next time you beam; no restart needed.",
+  "groups": {
+    "Transporter menu": [
+      { "key": "eShipRule", "label": "Beam to the ship when", "type": "enum", "default": "samePlanet",
+        "options": {
+          "landed": "It is landed in this area",
+          "samePlanet": "It is on or above this planet",
+          "anywhere": "Anywhere (experimental)"
+        },
+        "hint": "When the ship row can be used. 'Anywhere' can put you aboard a ship in another system." },
+      { "key": "bDiscoveredOnly", "label": "Only discovered locations", "type": "bool", "default": true,
+        "hint": "List only map markers already visible on your surface map." },
+      { "key": "fPoiRadius", "label": "Search radius (m)", "type": "float", "default": 0.0, "min": 0.0, "max": 100000.0, "step": 250.0,
+        "hint": "0 = no limit. A radius limits the list to your current area." },
+      { "key": "bWholePlanet", "label": "Whole planet", "type": "bool", "default": true,
+        "hint": "With no radius, also list map markers in the planet's other areas (cities, landing sites)." },
+      { "key": "iPoiMax", "label": "Most locations listed", "type": "int", "default": 40, "min": 1, "max": 100 },
+      { "key": "bBlockInCombat", "label": "Unavailable in combat", "type": "bool", "default": true }
+    ],
+    "Passengers": [
+      { "key": "fPassengerRadius", "label": "Follower pickup radius (units)", "type": "float", "default": 1024.0, "min": 0.0, "max": 8192.0, "step": 64.0,
+        "hint": "Followers within this distance beam with you." },
+      { "key": "fPassengerSpacing", "label": "Arrival spacing (units)", "type": "float", "default": 96.0, "min": 32.0, "max": 512.0, "step": 16.0 }
+    ],
+    "Countdown": [
+      { "key": "iCountdownSeconds", "label": "Countdown (s)", "type": "int", "default": 3, "min": 0, "max": 10,
+        "hint": "0 = no countdown." },
+      { "key": "eCountdownStyle", "label": "Countdown style", "type": "enum", "default": "gravJump",
+        "options": {
+          "gravJump": "Grav jump countdown box",
+          "notifications": "Notifications"
+        },
+        "hint": "The grav jump box needs Transporter_SF.dll." },
+      { "key": "sCountdownText", "label": "Notification text", "type": "string", "default": "Transporter lock in", "maxLength": 128,
+        "hint": "For the Notifications style." }
+    ],
+    "Gesture": [
+      { "key": "sPlayerIdle", "label": "Player idle", "type": "string", "default": "", "maxLength": 128,
+        "hint": "Idle form: hex form ID (0001ABCD) or EditorID. Empty = none. Find the watch idle with: help watch 4 idle" },
+      { "key": "sFollowerIdle", "label": "Follower idle", "type": "string", "default": "", "maxLength": 128 },
+      { "key": "fGestureSeconds", "label": "Gesture time (s)", "type": "float", "default": 2.0, "min": 0.0, "max": 10.0, "step": 0.1 },
+      { "key": "sAnimScript", "label": "Animation framework script", "type": "string", "default": "", "maxLength": 128,
+        "hint": "For a custom .glb gesture, e.g. NAF. Empty = not used." },
+      { "key": "sAnimPlayFunction", "label": "Play function", "type": "string", "default": "PlayAnimation", "maxLength": 128 },
+      { "key": "sAnimStopFunction", "label": "Stop function", "type": "string", "default": "", "maxLength": 128,
+        "hint": "For frameworks whose animations loop until stopped." },
+      { "key": "sPlayerAnimFile", "label": "Player animation file", "type": "string", "default": "", "maxLength": 256 },
+      { "key": "sFollowerAnimFile", "label": "Follower animation file", "type": "string", "default": "", "maxLength": 256 }
+    ],
+    "Beam out": [
+      { "key": "sOutLight", "label": "Light", "type": "string", "default": "", "maxLength": 128,
+        "hint": "Light (LIGH): hex form ID or EditorID. Empty = none." },
+      { "key": "fLightHeight", "label": "Light height, both phases (units)", "type": "float", "default": 64.0, "min": 0.0, "max": 256.0, "step": 8.0 },
+      { "key": "sOutShader", "label": "Effect shader", "type": "string", "default": "", "maxLength": 128,
+        "hint": "EffectShader (EFSH) on you and each passenger." },
+      { "key": "fOutShaderSeconds", "label": "Shader time (s)", "type": "float", "default": 2.0, "min": 0.0, "max": 10.0, "step": 0.1 },
+      { "key": "sOutSpell", "label": "Spell", "type": "string", "default": "", "maxLength": 128 },
+      { "key": "sOutSound", "label": "Sound", "type": "string", "default": "", "maxLength": 128,
+        "hint": "WwiseEvent (WWED)." },
+      { "key": "sOutImod", "label": "Screen effect", "type": "string", "default": "", "maxLength": 128,
+        "hint": "ImageSpaceModifier (IMOD), applied once." },
+      { "key": "fDelayBeforeMove", "label": "Time before the move (s)", "type": "float", "default": 2.5, "min": 0.0, "max": 10.0, "step": 0.1 }
+    ],
+    "Transit": [
+      { "key": "bFade", "label": "Fade to black during the move", "type": "bool", "default": true },
+      { "key": "fFadeSeconds", "label": "Fade time (s)", "type": "float", "default": 0.5, "min": 0.0, "max": 5.0, "step": 0.1 },
+      { "key": "fDelayAfterMove", "label": "Pause after arriving (s)", "type": "float", "default": 1.0, "min": 0.0, "max": 10.0, "step": 0.1 }
+    ],
+    "Beam in": [
+      { "key": "sInLight", "label": "Light", "type": "string", "default": "", "maxLength": 128 },
+      { "key": "fInLightSeconds", "label": "Light time (s)", "type": "float", "default": 2.0, "min": 0.0, "max": 10.0, "step": 0.1 },
+      { "key": "sInShader", "label": "Effect shader", "type": "string", "default": "", "maxLength": 128 },
+      { "key": "fInShaderSeconds", "label": "Shader time (s)", "type": "float", "default": 2.0, "min": 0.0, "max": 10.0, "step": 0.1 },
+      { "key": "sInSpell", "label": "Spell", "type": "string", "default": "", "maxLength": 128 },
+      { "key": "sInSound", "label": "Sound", "type": "string", "default": "", "maxLength": 128 },
+      { "key": "sInImod", "label": "Screen effect", "type": "string", "default": "", "maxLength": 128 }
+    ],
+    "Advanced": [
+      { "key": "sMapMarkerBase", "label": "Map marker base form", "type": "string", "default": "MapMarker", "maxLength": 128,
+        "hint": "Used to find nearby markers; markers are also found through the area's persistent references." },
+      { "key": "fUnitsPerMeter", "label": "Game units per meter", "type": "float", "default": 70.0, "min": 1.0, "max": 200.0, "step": 1.0,
+        "hint": "Only for the distances shown in the menu and the search radius." },
+      { "key": "fShipSeatOffset", "label": "Arrive behind the pilot seat by (units)", "type": "float", "default": 96.0, "min": 0.0, "max": 512.0, "step": 8.0,
+        "hint": "Where beaming to the ship puts you. Raise it if you arrive inside the seat." }
+    ]
+  },
+  "hotkeys": {
+    "openTransporter": { "label": "Open the transporter", "default": "F7", "group": "Transporter menu" }
+  }
+}

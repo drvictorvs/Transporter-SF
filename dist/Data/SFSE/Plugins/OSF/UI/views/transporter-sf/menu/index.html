@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Transporter</title>
+  <link rel="stylesheet" href="style.css?v=0.7.0">
+  <script src="/shared/osfui.js"></script>
+  <script src="main.js?v=0.7.0" defer></script>
+</head>
+<body>
+  <main id="panel" aria-labelledby="title">
+    <header>
+      <div class="glyph" aria-hidden="true"></div>
+      <div>
+        <h1 id="title">Transporter</h1>
+        <p id="area" class="sub">Locking on…</p>
+      </div>
+    </header>
+
+    <section aria-labelledby="shipHeading">
+      <h2 id="shipHeading">Ship</h2>
+      <ul id="ship" class="targets" role="listbox" aria-labelledby="shipHeading"></ul>
+    </section>
+
+    <section aria-labelledby="poiHeading">
+      <div class="row">
+        <h2 id="poiHeading">Local points of interest <span id="poiCount"></span></h2>
+        <input id="filter" type="search" placeholder="Filter" autocomplete="off" spellcheck="false" aria-label="Filter points of interest">
+      </div>
+      <ul id="pois" class="targets scroll" role="listbox" aria-labelledby="poiHeading"></ul>
+    </section>
+
+    <p id="status" role="status"></p>
+
+    <footer>
+      <span class="keys"><kbd>↑</kbd><kbd>↓</kbd> select <kbd>Enter</kbd> energize <kbd>Esc</kbd> close <span id="build" class="build"></span></span>
+      <span class="buttons">
+        <button id="rescan" type="button">Rescan</button>
+        <button id="close" type="button">Close</button>
+        <button id="energize" type="button" class="primary" disabled>Energize</button>
+      </span>
+    </footer>
+  </main>
+</body>
+</html>

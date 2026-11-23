@@ -1,0 +1,13 @@
+{
+  "manifestVersion": 1,
+  "title": "Transporter",
+  "description": "Beam to your ship or to a nearby point of interest.",
+  "entry": "index.html",
+  "kind": "menu",
+  "launcher": { "modTitle": "Transporter" },
+  "width": 1600,
+  "height": 900,
+  "transparent": true,
+  "capturesInput": true,
+  "pausesGame": true
+}
